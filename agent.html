@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OM Lesson Architect — Shorouk Gomaa Hussein</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="container">
+    <div class="nav-mark"><span class="dot"></span><strong>Shorouk Gomaa</strong></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="courses.html">Courses</a>
+      <a href="agent.html" aria-current="page">Agent</a>
+      <a href="contact.html">Contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero blueprint-bg" style="padding: 64px 0 60px;">
+  <div class="container">
+    <p class="eyebrow on-ink">Personal agent</p>
+    <h1 style="font-size: clamp(2rem, 4vw, 3rem);">OM Lesson <em>Architect</em></h1>
+    <p class="lede">Enter a topic and a student level. The agent runs the same five-layer method as my Prompt Ladder case study — role, context, interactivity, output format, quality criteria — and assembles a ready-to-teach lesson plan. It's the direct successor to the SmartOps simulation system in my projects.</p>
+  </div>
+</header>
+
+<section style="padding-top: 56px;">
+  <div class="container">
+    <div class="agent-shell">
+      <div class="agent-topbar"><span class="led"></span> OM-LESSON-ARCHITECT · v1</div>
+      <div class="agent-body">
+        <div class="field">
+          <label for="topic">Operations Management topic</label>
+          <input id="topic" type="text" placeholder="e.g. Economic Order Quantity, Quality Control, Capacity Planning" value="Inventory Management">
+        </div>
+        <div class="field">
+          <label for="level">Student level</label>
+          <select id="level">
+            <option>Undergraduate — introductory</option>
+            <option>Undergraduate — advanced</option>
+            <option>MBA / postgraduate</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="duration">Session length</label>
+          <select id="duration">
+            <option>45 minutes</option>
+            <option selected>75 minutes</option>
+            <option>90 minutes</option>
+          </select>
+        </div>
+        <button class="btn btn-amber" id="buildBtn" type="button">Build lesson plan</button>
+      </div>
+
+      <div class="output" id="output">
+        <h4>Generated output</h4>
+        <h3 id="outTitle">Lesson Plan</h3>
+        <p id="outMeta" style="font-family: var(--mono); font-size: 12.5px; color: var(--text-on-paper-dim); margin-bottom: 18px;"></p>
+        <table>
+          <thead>
+            <tr><th>Learning objective</th><th>Activity</th><th>Instructor role</th><th>Student role</th><th>Outcome</th></tr>
+          </thead>
+          <tbody id="outBody"></tbody>
+        </table>
+      </div>
+
+      <p class="agent-note">This agent runs entirely in your browser, no data leaves the page. It applies a fixed prompt-engineering structure (role → context → interactivity → format → quality) to any topic you enter, rather than calling a live language model — the same method used in the Prompt Ladder case study, packaged as a reusable tool.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span>© 2026 Shorouk Gomaa Hussein</span>
+    <a href="https://www.linkedin.com/in/shoroukgomaa" target="_blank" rel="noopener">linkedin.com/in/shoroukgomaa</a>
+  </div>
+</footer>
+
+<script src="theme.js"></script>
+<script>
+  const btn = document.getElementById('buildBtn');
+  const out = document.getElementById('output');
+  const outTitle = document.getElementById('outTitle');
+  const outMeta = document.getElementById('outMeta');
+  const outBody = document.getElementById('outBody');
+
+  function scenarioName(topic){
+    const t = topic.trim() || "Operations Management";
+    return `The ${t} Decision Room`;
+  }
+
+  function buildRows(topic, level){
+    const t = topic.trim() || "this topic";
+    return [
+      {
+        obj: `Explain the core concepts and cost drivers behind ${t}.`,
+        act: `Mini-lecture + real dataset walkthrough on ${t}.`,
+        instr: `Deliver a short, example-led briefing; frame the trade-offs.`,
+        stud: `Listen, annotate the dataset, flag one open question.`,
+        out: `Students can define ${t} in their own words.`
+      },
+      {
+        obj: `Apply ${t} concepts to a realistic business scenario.`,
+        act: `"${scenarioName(topic)}" — small groups given constrained data and asked to make a call.`,
+        instr: `Circulate, prompt with follow-up questions, do not hand out the answer.`,
+        stud: `Work in groups, crunch the numbers, defend a recommendation.`,
+        out: `Groups produce a justified decision, not just a number.`
+      },
+      {
+        obj: `Compare decisions across groups and connect them to theory.`,
+        act: `Rapid-fire group readouts + instructor-led debrief.`,
+        instr: `Lead the debrief, highlight the trade-off the theory predicts.`,
+        stud: `Present a 2-minute pitch, question one other group's approach.`,
+        out: `Students can explain why different assumptions led to different answers.`
+      },
+      {
+        obj: `Receive feedback and consolidate the ${level.toLowerCase()} take-away.`,
+        act: `Individual exit ticket: one decision, one justification.`,
+        instr: `Give written or verbal feedback on the exit ticket.`,
+        stud: `Submit a short, defensible recommendation.`,
+        out: `Instructor has evidence of individual understanding, not just group output.`
+      }
+    ];
+  }
+
+  btn.addEventListener('click', () => {
+    const topic = document.getElementById('topic').value || "Operations Management";
+    const level = document.getElementById('level').value;
+    const duration = document.getElementById('duration').value;
+
+    outTitle.textContent = `Lesson Plan: ${topic}`;
+    outMeta.textContent = `LEVEL: ${level.toUpperCase()}  ·  DURATION: ${duration.toUpperCase()}  ·  LAYERS: ROLE / CONTEXT / INTERACTIVITY / FORMAT / QUALITY`;
+
+    const rows = buildRows(topic, level);
+    outBody.innerHTML = rows.map(r => `
+      <tr>
+        <td>${r.obj}</td>
+        <td>${r.act}</td>
+        <td>${r.instr}</td>
+        <td>${r.stud}</td>
+        <td>${r.out}</td>
+      </tr>
+    `).join('');
+
+    out.classList.add('show');
+    out.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+</script>
+</body>
+</html>

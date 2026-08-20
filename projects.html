@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Shorouk Gomaa Hussein</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="container">
+    <div class="nav-mark"><span class="dot"></span><strong>Shorouk Gomaa</strong></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html" aria-current="page">Projects</a>
+      <a href="courses.html">Courses</a>
+      <a href="agent.html">Agent</a>
+      <a href="contact.html">Contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero blueprint-bg" style="padding: 64px 0 60px;">
+  <div class="container">
+    <p class="eyebrow on-ink">Selected work</p>
+    <h1 style="font-size: clamp(2rem, 4vw, 3rem);">Four <em>real</em> systems, shipped.</h1>
+    <p class="lede">Each project follows the same shape: the problem, what I built, and what came of it.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="card-grid">
+
+      <div class="card">
+        <img class="proj-shot" src="assets/proj-chainmind.jpg" alt="ChainMind AI risk output table">
+        <span class="tag">Machine Learning · Supply Chain</span>
+        <h3>ChainMind AI</h3>
+        <p style="margin-bottom:0;"><strong>Problem:</strong> Supply chains rarely turn signals — supplier delays, weather, demand swings — into a clear risk picture before damage is done.<br><br>
+        <strong>What I did:</strong> Built a Random Forest model on shipment, inventory, and demand data to predict delay risk, score it (Low/Medium/High), and auto-generate recommendations.<br><br>
+        <strong>What came of it:</strong> ~76% prediction accuracy on ~1,000 simulated shipments, plus an executive summary identifying the key operational risk drivers.</p>
+      </div>
+
+      <div class="card">
+        <img class="proj-shot" src="assets/proj-powerbi.jpg" alt="Power BI sales and profit dashboard">
+        <span class="tag">Business Intelligence · Power BI</span>
+        <h3>Sales &amp; Customer Data Analysis Dashboard</h3>
+        <p style="margin-bottom:0;"><strong>Problem:</strong> Raw sales and customer data doesn't answer "where's the profit coming from" on its own.<br><br>
+        <strong>What I did:</strong> Built an interactive Power BI dashboard with KPIs, trend analysis, and drill-downs by category, country, and product.<br><br>
+        <strong>What came of it:</strong> A dynamic, user-friendly report enabling real data-driven decisions instead of static exports. Associated with the National Telecommunication Institute (NTI).</p>
+      </div>
+
+      <div class="card">
+        <img class="proj-shot" src="assets/proj-n8n.jpg" alt="n8n event reminder automation workflow">
+        <span class="tag">Automation · No-Code</span>
+        <h3>Event Reminder Automation System</h3>
+        <p style="margin-bottom:0;"><strong>Problem:</strong> Event details shared in a post or link don't turn themselves into reminders.<br><br>
+        <strong>What I did:</strong> Built a no-code workflow that extracts event details (name, date, time, link) from a Telegram input, stores them in Google Sheets, and sends reminders via Email and Google Calendar.<br><br>
+        <strong>What came of it:</strong> A working, end-to-end reminder system with no manual step between "event announced" and "reminder sent." Associated with iCareer.</p>
+      </div>
+
+      <div class="card">
+        <img class="proj-shot" src="assets/proj-smartops.jpg" alt="SmartOps Apps Script automation code">
+        <span class="tag">Simulation · Education</span>
+        <h3>SmartOps: Decision-Making Simulation System</h3>
+        <p style="margin-bottom:0;"><strong>Problem:</strong> Theoretical Operations Management learning rarely gets tested against a realistic, scenario-based decision.<br><br>
+        <strong>What I did:</strong> Designed multi-path decision scenarios with automated evaluation logic and personalized feedback, delivered by email through a fully automated Google Apps Script workflow.<br><br>
+        <strong>What came of it:</strong> A working simulator that bridges classroom theory and practice — and the direct precursor to the OM Lesson Architect agent on this site.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span>© 2026 Shorouk Gomaa Hussein</span>
+    <a href="https://www.linkedin.com/in/shoroukgomaa" target="_blank" rel="noopener">linkedin.com/in/shoroukgomaa</a>
+  </div>
+</footer>
+
+<script src="theme.js"></script>
+</body>
+</html>
